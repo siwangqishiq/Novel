@@ -19,4 +19,8 @@ public class LogUtil {
     public static void i(final String msg){
         logger.info(msg);
     }
+
+    public static void e(final String msg){
+        logger.error(msg);
+    }
 }

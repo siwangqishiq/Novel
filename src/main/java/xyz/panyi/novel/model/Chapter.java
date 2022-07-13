@@ -7,9 +7,28 @@ public class Chapter {
     private long id;
     private long novelId;//小说id
 
-    private String url;
+    private int index;
+    private int totalIndex;
+
+    private String originUrl;
     private String title;
     private String content;
+
+    public int getIndex() {
+        return index;
+    }
+
+    public void setIndex(int index) {
+        this.index = index;
+    }
+
+    public int getTotalIndex() {
+        return totalIndex;
+    }
+
+    public void setTotalIndex(int totalIndex) {
+        this.totalIndex = totalIndex;
+    }
 
     public long getId() {
         return id;
@@ -27,12 +46,12 @@ public class Chapter {
         this.novelId = novelId;
     }
 
-    public String getUrl() {
-        return url;
+    public String getOriginUrl() {
+        return originUrl;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setOriginUrl(String originUrl) {
+        this.originUrl = originUrl;
     }
 
     public String getTitle() {
