@@ -17,6 +17,16 @@ public class Novel {
 
     private long updateTime;
 
+    private String extra;
+
+    public String getExtra() {
+        return extra;
+    }
+
+    public void setExtra(String extra) {
+        this.extra = extra;
+    }
+
     public long getUpdateTime() {
         return updateTime;
     }

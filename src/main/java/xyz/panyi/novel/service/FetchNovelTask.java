@@ -8,6 +8,10 @@ import org.springframework.stereotype.Component;
 import xyz.panyi.novel.spider.Spider;
 import xyz.panyi.novel.util.LogUtil;
 
+/**
+ * 抓取任务
+ *
+ */
 @Component
 public class FetchNovelTask {
     private static final Logger logger = LogUtil.buildLogger("FetchNovelTask");
@@ -21,7 +25,7 @@ public class FetchNovelTask {
 
         final Spider spider = appContext.getBean(Spider.class);
         logger.info("create spider instance : " + spider);
-
+        spider.parseComposePage();
         logger.info("fetch novel data ended!");
     }
 }

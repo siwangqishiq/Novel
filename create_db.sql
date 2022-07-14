@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS novel (
 CREATE TABLE IF NOT EXISTS chapter (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     novelId LONG,
-    index INT,
+    pageIndex INT,
     originUrl VARCHAR(3000),
     title VARCHAR(1000),
     content TEXT,
