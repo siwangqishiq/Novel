@@ -28,6 +28,9 @@ import java.util.Set;
 @Component
 public class Spider {
     private static final String BASE_URL = "http://www.xbqgxs.net/rank/";
+    private static final String BASE_URL2 = "http://www.xbqgxs.net/rank/monthvisit/";
+    private static final String BASE_URL3 = "http://www.xbqgxs.net/rank/weekvisit/";
+    private static final String BASE_URL4 = "http://www.xbqgxs.net/rank/dayvisit/";
 
     private static final Logger logger = LogUtil.buildLogger("Spider");
 
@@ -49,7 +52,13 @@ public class Spider {
      * @param
      */
     public void parseComposePage(){
-        final String baseUrl = BASE_URL;
+        doParseCompose(BASE_URL);
+        doParseCompose(BASE_URL2);
+        doParseCompose(BASE_URL3);
+        doParseCompose(BASE_URL4);
+    }
+
+    private void doParseCompose(final String baseUrl){
         logger.info("parseComposePage : " + baseUrl);
 
         prepareNidSets();
