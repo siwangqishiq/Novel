@@ -1,11 +1,14 @@
 package xyz.panyi.novel;
 
-import xyz.panyi.novel.spider.Spider;
-import xyz.panyi.novel.util.LogUtil;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
+
+@SpringBootApplication
+@EnableScheduling
 public class MainApp {
     public static void main(String[] args){
-        Spider spider = new Spider();
-        spider.fetchNovel("http://www.xbqgxs.net/130_130827/");
+        SpringApplication.run(MainApp.class, args);
     }
 }//end class

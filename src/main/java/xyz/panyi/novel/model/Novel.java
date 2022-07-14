@@ -7,12 +7,31 @@ public class Novel {
     private long id;
     private String name;//小说名称
     private String author;//作者
-    private String desc;//简介
+    private String novelDesc;//简介
     private String coverUrl;//封面图片
     private String tag;//标签
+    private int chapterCount;//章节数量
 
     private String nid;//抓取网站对应的唯一标识
     private String originUrl;
+
+    private long updateTime;
+
+    public long getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(long updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    public int getChapterCount() {
+        return chapterCount;
+    }
+
+    public void setChapterCount(int chapterCount) {
+        this.chapterCount = chapterCount;
+    }
 
     public String getTag() {
         return tag;
@@ -28,6 +47,21 @@ public class Novel {
 
     public void setOriginUrl(String originUrl) {
         this.originUrl = originUrl;
+    }
+
+    @Override
+    public String toString() {
+        return "Novel{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", author='" + author + '\'' +
+                ", desc='" + novelDesc + '\'' +
+                ", coverUrl='" + coverUrl + '\'' +
+                ", tag='" + tag + '\'' +
+                ", chapterCount=" + chapterCount +
+                ", nid='" + nid + '\'' +
+                ", originUrl='" + originUrl + '\'' +
+                '}';
     }
 
     public String getNid() {
@@ -62,12 +96,12 @@ public class Novel {
         this.author = author;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getNovelDesc() {
+        return novelDesc;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setNovelDesc(String novelDesc) {
+        this.novelDesc = novelDesc;
     }
 
     public String getCoverUrl() {

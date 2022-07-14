@@ -8,11 +8,20 @@ public class Chapter {
     private long novelId;//小说id
 
     private int index;
-    private int totalIndex;
 
     private String originUrl;
     private String title;
     private String content;
+
+    private long updateTime;
+
+    public long getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(long updateTime) {
+        this.updateTime = updateTime;
+    }
 
     public int getIndex() {
         return index;
@@ -20,14 +29,6 @@ public class Chapter {
 
     public void setIndex(int index) {
         this.index = index;
-    }
-
-    public int getTotalIndex() {
-        return totalIndex;
-    }
-
-    public void setTotalIndex(int totalIndex) {
-        this.totalIndex = totalIndex;
     }
 
     public long getId() {
