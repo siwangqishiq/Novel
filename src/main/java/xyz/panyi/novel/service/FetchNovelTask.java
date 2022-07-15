@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
-import xyz.panyi.novel.spider.Spider;
 import xyz.panyi.novel.util.LogUtil;
 
 /**
@@ -19,7 +18,7 @@ public class FetchNovelTask {
     @Autowired
     private ApplicationContext appContext;
 
-    @Scheduled(fixedDelay = 3 * 24 * 60 * 60 * 1000)
+    @Scheduled(fixedDelay = 2 * 24 * 60 * 60 * 1000)
     public void fetch(){
         logger.info("start fetch novel data");
 

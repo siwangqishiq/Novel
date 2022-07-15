@@ -1,4 +1,4 @@
-package xyz.panyi.novel.spider;
+package xyz.panyi.novel.service;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -30,7 +30,7 @@ public class Spider {
     private static final String BASE_URL = "http://www.xbqgxs.net/rank/";
     private static final String BASE_URL2 = "http://www.xbqgxs.net/rank/monthvisit/";
     private static final String BASE_URL3 = "http://www.xbqgxs.net/rank/weekvisit/";
-    private static final String BASE_URL4 = "http://www.xbqgxs.net/rank/dayvisit/";
+    private static final String BASE_URL4 = "http://www.xbqgxs.net/rank/dayvisit/"; //每日
 
     private static final Logger logger = LogUtil.buildLogger("Spider");
 
@@ -52,9 +52,9 @@ public class Spider {
      * @param
      */
     public void parseComposePage(){
-        doParseCompose(BASE_URL);
-        doParseCompose(BASE_URL2);
-        doParseCompose(BASE_URL3);
+//        doParseCompose(BASE_URL);
+//        doParseCompose(BASE_URL2);
+//        doParseCompose(BASE_URL3);
         doParseCompose(BASE_URL4);
     }
 
@@ -66,7 +66,10 @@ public class Spider {
         try {
             Document doc = Jsoup.connect(baseUrl).get();
             Elements mainElements = doc.getElementsByClass("recentread-main");
-            for(Element element : mainElements){
+            int totalSize = mainElements.size();
+
+            for(int i = 0 ; i < totalSize;i++){
+                final Element element = mainElements.get(i);
                 Elements tagLinks = element.getElementsByTag("a");
                 Element tagLink = tagLinks.first();
                 if(tagLink == null){
@@ -84,9 +87,9 @@ public class Spider {
                     continue;
                 }
 
-                fetchNovel(link);
+                fetchNovel(link , i , totalSize);
                 nidSets.add(nid);
-            }//end for each
+            }//end for i
         } catch (IOException e) {
             logger.error(e.toString());
         }
@@ -96,7 +99,7 @@ public class Spider {
      *  抓取小说内容
      * @param novelUrl
      */
-    public void fetchNovel(final String novelUrl){
+    public void fetchNovel(final String novelUrl ,int novelIndex , int totalNovel){
         LogUtil.log("pull : " + novelUrl);
 
         try {
@@ -162,7 +165,8 @@ public class Spider {
                 LogUtil.log("href:" + chapterUrl);
 
                 LogUtil.log("chapter catch "+(i + 1)  +" / " + chs.size());
-                fetchChapter(chapterUrl , novel ,i ,chapterTitle);
+                fetchChapter(chapterUrl , novel ,i ,chapterTitle , String.format("%d / %d" ,
+                        novelIndex + 1 , totalNovel));
 
                 sleepMoment();
             }//end for i
@@ -176,7 +180,7 @@ public class Spider {
      * @param chapterUrl
      */
     public void fetchChapter(final String chapterUrl , final Novel novel , int pageIndex ,
-                             final String chapterTitle){
+                             final String chapterTitle , final String totalProgress){
         try {
             Document doc = Jsoup.connect(chapterUrl).get();
             Elements ps = doc.getElementById("article").getElementsByTag("p");
@@ -196,7 +200,8 @@ public class Spider {
             chapter.setUpdateTime(System.currentTimeMillis());
 
             int result = chapterDao.insertChapter(chapter);
-            logger.info("insert chapter db result : " + result);
+            logger.info("insert chapter db result : " + result +"  chapterId :" + chapter.getId());
+            logger.info("totalProgress : " + totalProgress);
         } catch (IOException e) {
             logger.error(e.getMessage());
         }
