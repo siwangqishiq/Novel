@@ -52,9 +52,9 @@ public class Spider {
      * @param
      */
     public void parseComposePage(){
-//        doParseCompose(BASE_URL);
-//        doParseCompose(BASE_URL2);
-//        doParseCompose(BASE_URL3);
+        doParseCompose(BASE_URL);
+        doParseCompose(BASE_URL2);
+        doParseCompose(BASE_URL3);
         doParseCompose(BASE_URL4);
     }
 
