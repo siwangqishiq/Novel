@@ -22,7 +22,7 @@ public interface NovelDao {
             before = false, keyProperty = "id", resultType = int.class)
     int insertNovel(Novel novel);
 
-    @Select("select * from novel")
+    @Select("select * from novel order by updateTime desc")
     public List<Novel> queryNovels();
 }
 
