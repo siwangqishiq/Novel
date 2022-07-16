@@ -21,6 +21,9 @@ public interface NovelDao {
     @SelectKey(statement = "select seq as id from sqlite_sequence where (name='novel')",
             before = false, keyProperty = "id", resultType = int.class)
     int insertNovel(Novel novel);
+
+    @Select("select * from novel")
+    public List<Novel> queryNovels();
 }
 
 
