@@ -69,6 +69,8 @@ public class Spider {
             int totalSize = mainElements.size();
 
             for(int i = 0 ; i < totalSize;i++){
+                LogUtil.log("progress: " + (i + 1) + " / " + totalSize);
+
                 final Element element = mainElements.get(i);
                 Elements tagLinks = element.getElementsByTag("a");
                 Element tagLink = tagLinks.first();
@@ -156,20 +158,20 @@ public class Spider {
 
             //章节数据
             LogUtil.log("chapter count : " + chs.size());
-            for(int i = 0 ; i < chs.size();i++){
-                Element element = chs.get(i);
-
-                final String chapterUrl = element.absUrl("href");
-                final String chapterTitle = element.text();
-                LogUtil.log("chapter title: " + chapterTitle);
-                LogUtil.log("href:" + chapterUrl);
-
-                LogUtil.log("chapter catch "+(i + 1)  +" / " + chs.size());
-                fetchChapter(chapterUrl , novel ,i ,chapterTitle , String.format("%d / %d" ,
-                        novelIndex + 1 , totalNovel));
-
-                sleepMoment();
-            }//end for i
+//            for(int i = 0 ; i < chs.size();i++){
+//                Element element = chs.get(i);
+//
+//                final String chapterUrl = element.absUrl("href");
+//                final String chapterTitle = element.text();
+//                LogUtil.log("chapter title: " + chapterTitle);
+//                LogUtil.log("href:" + chapterUrl);
+//
+//                LogUtil.log("chapter catch "+(i + 1)  +" / " + chs.size());
+//                fetchChapter(chapterUrl , novel ,i ,chapterTitle , String.format("%d / %d" ,
+//                        novelIndex + 1 , totalNovel));
+//
+//                sleepMoment();
+//            }//end for i
         } catch (IOException e) {
             logger.error(e.toString());
         }

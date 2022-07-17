@@ -18,7 +18,7 @@ public class FetchNovelTask {
     @Autowired
     private ApplicationContext appContext;
 
-    @Scheduled(fixedDelay = 2 * 24 * 60 * 60 * 1000)
+    @Scheduled(fixedDelay = 1 * 60 * 60 * 1000)
     public void fetch(){
         logger.info("start fetch novel data");
 
